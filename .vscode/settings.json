@@ -3,4 +3,5 @@
         "twig": "html"
     },
     "emmet.triggerExpansionOnTab": true,
+    "editor.wordWrap": "on",
 }
