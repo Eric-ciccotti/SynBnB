@@ -3,26 +3,25 @@
 namespace App\DataFixtures;
 
 use App\Entity\Ad;
+use Faker\Factory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
-use Faker\Factory;
 
 class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $faker = Factory::create('fr-FR');
+        $faker = Factory::create('fr-FR');  //pour avoir des dummy data
 
         for ($i = 1; $i <= 30; $i++) {
-            
+
             $title = $faker->sentence(5);
             $coverImage = $faker->imageUrl(1000, 350);
             $introduction = $faker->paragraph(2);
             $content = '<p>' . join("</p><p>", $faker->paragraphs(5)) . '</p>'; // <p> dutext </p><p> dutext </p>
 
             $ad = new Ad();
-            $ad->setTitle($title)
-                ->setSlug("titre-de-l-annonce-n-$i")
+            $ad->setTitle($title) 
                 ->setCoverImage($coverImage)
                 ->setIntroduction($introduction)
                 ->setContent($content)
